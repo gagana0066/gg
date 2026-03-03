@@ -1,24 +1,32 @@
 import './globals.css';
+import type { Metadata } from 'next';
 import { ReactNode } from 'react';
+import MainNav from '../components/MainNav';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'GG Tracker',
   description: 'High-performance life tracking system'
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className="bg-gray-900 text-gray-100 antialiased">
-        <header className="bg-gray-800 p-4">
-          <nav className="container mx-auto flex space-x-4">
-            <a href="/" className="hover:underline">Dashboard</a>
-            <a href="/goals" className="hover:underline">Goals</a>
-            <a href="/habits" className="hover:underline">Habits</a>
-            <a href="/journal" className="hover:underline">Journal</a>
-          </nav>
+    <html lang="en">
+      <body
+        className="antialiased"
+        style={{ fontFamily: '"Avenir Next", "Futura", "Trebuchet MS", sans-serif' }}
+      >
+        <header className="sticky top-0 z-20 border-b border-[rgba(203,223,144,0.2)] bg-[rgba(15,30,56,0.68)] backdrop-blur-md">
+          <div className="gg-shell flex items-center justify-between gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-[0.26em] text-[rgba(203,223,144,0.82)]">
+                GG Tracker
+              </p>
+              <p className="text-sm text-[rgba(238,244,220,0.75)]">Life Operating System</p>
+            </div>
+            <MainNav />
+          </div>
         </header>
-        <main className="container mx-auto p-4">{children}</main>
+        <main className="gg-shell py-7">{children}</main>
       </body>
     </html>
   );
